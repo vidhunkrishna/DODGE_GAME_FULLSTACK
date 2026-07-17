@@ -217,22 +217,7 @@ Add your Firebase configuration to the frontend before running the application.
 9. Unlock achievements by completing various in-game challenges.
 10. View your game statistics and achievements from your profile page.
 
----
 
-## 📸 Screenshots
-
-_Add screenshots of:_
-
-- Login
-- Register
-- Main Menu
-- Gameplay
-- Power-ups
-- Leaderboard
-- Profile
-- Achievements
-
----
 
 ## 📂 Project Structure
 
