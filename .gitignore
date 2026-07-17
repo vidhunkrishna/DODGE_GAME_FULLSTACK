@@ -47,6 +47,7 @@ dist-ssr
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+<<<<<<< HEAD
 # Firebase Admin SDK
 **/firebase-service-account.json
 # Dependencies
@@ -65,3 +66,5 @@ dist-ssr/
 
 # Environment variables
 .env
+=======
+>>>>>>> b877017b9c1cf71989fcd4ad79dc092e6ae635d0
