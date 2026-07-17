@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@utility input-field {
+  @apply w-72 p-1.5 rounded-lg outline-none
+         focus:ring-2 bg-slate-800
+         focus:ring-cyan-900 shadow-2xl transition duration-300 hover:scale-105;
+}
+@utility submit-button {
+  @apply h-8 w-72 bg-linear-to-br from-blue-700 to-blue-800 hover:from-blue-900 hover:to-blue-950 transition duration-300 rounded-lg cursor-pointer shadow-2xs focus:ring-2 focus:ring-cyan-900 hover:scale-105;
+}
+@utility lastext {
+  @apply font-bold text-white hover:text-slate-500;
+}

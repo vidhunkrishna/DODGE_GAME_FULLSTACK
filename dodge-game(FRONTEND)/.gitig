@@ -1,0 +1,12 @@
+# Frontend
+node_modules/
+dist/
+
+# Backend
+target/
+
+# Uploads
+uploads/
+
+# Environment
+.env
