@@ -10,7 +10,7 @@ export const Signuppage = () => {
   const handlesignin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/auth/register", {
+      const response = await axios.post("https://dodge-game-fullstack.onrender.com/auth/register", {
         email: email,
         username: username,
         password: password,

@@ -7,7 +7,7 @@ export default function Profilepage() {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.get("http://localhost:8080/players/me", {
+      const response = await axios.get("https://dodge-game-fullstack.onrender.com/players/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,7 +35,7 @@ export default function Profilepage() {
     const token = localStorage.getItem("jwt");
     const formData = new FormData();
     formData.append("image", file);
-    await axios.post("http://localhost:8080/players/upload-pic", formData, {
+    await axios.post("https://dodge-game-fullstack.onrender.com/players/upload-pic", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -52,7 +52,7 @@ export default function Profilepage() {
         >
           {player.profilepic ? (
             <img
-              src={`http://localhost:8080/uploads/${player.profilepic}`}
+              src={`https://dodge-game-fullstack.onrender.com/uploads/${player.profilepic}`}
               alt="profile"
               className="w-full h-full object-cover rounded-full"
             />

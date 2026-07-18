@@ -12,7 +12,7 @@ export default function LeaderboardPage() {
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.get(
-        "http://localhost:8080/players/leaderboard",
+        "https://dodge-game-fullstack.onrender.com/players/leaderboard",
         {
           headers: {
             Authorization: `Bearer ${token}`,

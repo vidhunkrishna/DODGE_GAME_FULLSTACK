@@ -86,7 +86,7 @@ export default function GameCanvas({ onGameStart, onGameEnd }) {
       const survivalTime = Math.floor((Date.now() - gameStartTime) / 1000);
       
       await axios.post(
-        "http://localhost:8080/gamesessions",
+        "https://dodge-game-fullstack.onrender.com/gamesessions",
 
         {
           score: score,

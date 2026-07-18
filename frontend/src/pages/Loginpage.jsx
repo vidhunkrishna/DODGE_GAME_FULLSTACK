@@ -20,7 +20,7 @@ export default function LoginScreen() {
 
       
 
-      const response = await axios.post("http://localhost:8080/auth/google", {
+      const response = await axios.post("https://dodge-game-fullstack.onrender.com/auth/google", {
         token: firebaseToken,
       });
 
@@ -38,7 +38,7 @@ export default function LoginScreen() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
+      const response = await axios.post("https://dodge-game-fullstack.onrender.com/auth/login", {
         email: email,
         password: password,
       });

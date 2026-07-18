@@ -69,7 +69,7 @@ public class playerController {
       Files.copy(image.getInputStream(),path.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
       player.setProfilepic(filename);
       playerrepo.save(player);
-      return "http://localhost:8080/uploads/"+filename;
+      return "https://dodge-game-fullstack.onrender.com/uploads/"+filename;
        }catch(Exception e){
          e.printStackTrace();
          throw new RuntimeException(e);
