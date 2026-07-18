@@ -120,7 +120,7 @@ export default function Profilepage() {
             <p className="text-center">Difficulty</p>
           </div>
           {player.gameSession.length === 0 ? (
-            <p>No Games player yet</p>
+            <p className="text-center mt-4">No Games played yet</p>
           ) : (
             [...player.gameSession].reverse().map((session, i) => (
               <div key={session.id}>
