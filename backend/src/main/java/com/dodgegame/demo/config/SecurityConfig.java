@@ -68,9 +68,12 @@ public class SecurityConfig {
         CorsConfiguration configuration =
                 new CorsConfiguration();
 
-        configuration.addAllowedOrigin(
-                "http://localhost:5173"
-        );
+        configuration.setAllowedOrigins(
+    java.util.List.of(
+        "http://localhost:5173",
+        "https://dodge-game-fullstack.vercel.app"
+    )
+);
 
         configuration.addAllowedMethod("*");
 
