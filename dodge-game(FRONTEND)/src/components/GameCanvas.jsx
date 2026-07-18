@@ -115,7 +115,7 @@ export default function GameCanvas({ onGameStart, onGameEnd }) {
       y: 200,
       height: 50,
       width: 50,
-      speed: 3,
+      speed: 5,
     };
 
     const difficultysetting = {
