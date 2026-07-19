@@ -4,15 +4,18 @@ import { useEffect, useRef, useState } from "react";
 export default function Profilepage() {
   const [player, setPlayer] = useState(null);
   const fileinputRef = useRef(null);
-  const [imageversion,setImageVersion] = useState(null)
+  const [imageversion, setImageVersion] = useState(null);
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.get("https://dodge-game-fullstack.onrender.com/players/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.get(
+        "https://dodge-game-fullstack.onrender.com/players/me",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       setPlayer(response.data);
     } catch (error) {
       console.log(error);
@@ -36,11 +39,15 @@ export default function Profilepage() {
     const token = localStorage.getItem("jwt");
     const formData = new FormData();
     formData.append("image", file);
-    await axios.post("https://dodge-game-fullstack.onrender.com/players/upload-pic", formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    await axios.post(
+      "https://dodge-game-fullstack.onrender.com/players/upload-pic",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     await fetchProfile();
     setImageVersion(Date.now());
   };
@@ -53,7 +60,7 @@ export default function Profilepage() {
         >
           {player.profilepic ? (
             <img
-              src={`https://dodge-game-fullstack.onrender.com/uploads/${player.profilepic}`}
+              src={player.profilepic}
               alt="profile"
               className="w-full h-full object-cover rounded-full"
             />

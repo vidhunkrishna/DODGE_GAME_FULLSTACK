@@ -1,12 +1,8 @@
 package com.dodgegame.demo.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.dodgegame.demo.entity.Player;
 import com.dodgegame.demo.repository.playerRepository;
 import com.dodgegame.demo.service.playerService;
@@ -30,7 +28,8 @@ public class playerController {
 
    @Autowired
    private playerRepository playerrepo;
-
+   @Autowired
+   private Cloudinary cloudinary;
    public playerController(playerService playerservice) {
     this.playerservice = playerservice;
    }
@@ -59,17 +58,23 @@ public class playerController {
    public String uploadprofile(@RequestParam("image") MultipartFile image) throws IOException{
        System.out.println("UPLOAD CONTROLLER HIT");
        try{
-      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-      String email = authentication.getName();
-      Player player = playerrepo.findByEmail(email).orElseThrow(()-> new RuntimeException("No Player Found"));
-      String original = image.getOriginalFilename();
-      String sub = original.substring(original.lastIndexOf("."));
-      String filename = UUID.randomUUID() + sub;
-      Path path = Paths.get("uploads");
-      Files.copy(image.getInputStream(),path.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
-      player.setProfilepic(filename);
-      playerrepo.save(player);
-      return "https://dodge-game-fullstack.onrender.com/uploads/"+filename;
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+         String email = authentication.getName();
+
+         Player player = playerrepo.findByEmail(email)
+               .orElseThrow(() -> new RuntimeException("No Player Found"));
+
+         Map<?, ?> uploadResult = cloudinary.uploader().upload(
+               image.getBytes(),
+               ObjectUtils.emptyMap()
+         );
+
+         String imageUrl = uploadResult.get("secure_url").toString();
+
+         player.setProfilepic(imageUrl);
+         playerrepo.save(player);
+
+         return imageUrl;
        }catch(Exception e){
          e.printStackTrace();
          throw new RuntimeException(e);
