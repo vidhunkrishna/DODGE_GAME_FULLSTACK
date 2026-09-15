@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dodge-game-fullstack.vercel.app/sitemap.xml
